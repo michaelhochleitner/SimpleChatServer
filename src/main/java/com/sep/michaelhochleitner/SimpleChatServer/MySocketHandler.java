@@ -21,7 +21,7 @@ public class MySocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        System.out.print("Connection established to "+session.getRemoteAddress());
+        log.info("Connection established to "+session.getRemoteAddress());
         log.info("Connection established to "+session.getId().toString());
         sessions.add(session);
     }
@@ -37,6 +37,7 @@ public class MySocketHandler extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+        log.info("Connection with id "+session.getId().toString()+" closed");
         session.close();
     }
 }
